@@ -8,6 +8,20 @@
   </div>
 </template>
 
+<script>
+export default {
+  methods: {
+    obter() {
+      // eslint-disable-next-line
+     return this.$http.get('users').then((res) => console.log(res));
+    },
+  },
+  mounted() {
+    this.obter();
+  },
+};
+</script>
+
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
