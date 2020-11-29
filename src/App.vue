@@ -4,21 +4,21 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <router-view/>
+    <router-view />
   </div>
 </template>
 
 <script>
 export default {
-  methods: {
-    obter() {
-      // eslint-disable-next-line
-     return this.$http.get('users').then((res) => console.log(res));
-    },
-  },
-  mounted() {
-    this.obter();
-  },
+  // methods: {
+  //   obter() {
+  //     return this.$http.get('users')
+  //       .then((res) => console.log(res.data));
+  //   },
+  // },
+  // mounted() {
+  //   this.obter();
+  // },
 };
 </script>
 
