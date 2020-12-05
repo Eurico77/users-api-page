@@ -10,15 +10,7 @@
 
 <script>
 export default {
-  // methods: {
-  //   obter() {
-  //     return this.$http.get('users')
-  //       .then((res) => console.log(res.data));
-  //   },
-  // },
-  // mounted() {
-  //   this.obter();
-  // },
+
 };
 </script>
 

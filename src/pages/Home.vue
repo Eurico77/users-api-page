@@ -1,69 +1,53 @@
 <template>
   <div class="home">
-    <h1>Crud users</h1>
-
-    <table style="width:100%" v-for="user in users" :key="user.id">
-      <tr>
-        <th>NOME</th>
-        <th>EMAIL</th>
-      </tr>
-      <tr>
-        <td>{{ user.name }}</td>
-        <td>{{ user.mail }}</td>
-      </tr>
-      <tr></tr>
-    </table>
-
-    <form class="formulario" @submit.prevent="criar">
-      <input type="text" name="name" placeholder="digite o nome" v-model="user.name" />
-      <input type="text" name="mail" placeholder="digite o email" v-model="user.mail" />
-      <input type="password" name="password" placeholder="digite a senha" v-model="user.passwd" />
-      <button>Cadastrar</button>
-    </form>
+    <h1>Cadastre um novo usuario</h1>
+    <Form @submit="criar"> </Form>
   </div>
 </template>
 
 <script>
 import { mapState, mapActions, mapGetters } from 'vuex';
+import Form from '../components/Form.vue';
 
 export default {
   name: 'Home',
-  data() {
-    return {
-      user: {
-        name: '',
-        mail: '',
-        passwd: '',
-      },
-    };
+  components: {
+    Form,
   },
+
   computed: {
     ...mapState('Users', ['users']),
     ...mapGetters('Users', ['usuariosFiltrados', 'tamanho']),
   },
   methods: {
     ...mapActions('Users', ['fetchAll', 'create']),
-    async criar() {
-      await this.create(this.user);
+    async criar(user) {
+      await this.create(user);
+      this.fetchAll();
     },
   },
+
   mounted() {
     this.fetchAll();
   },
 };
 </script>
 <style>
+li {
+  list-style: none;
+}
 .home {
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.info {
+.list {
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
+  flex-direction: column;
 }
-.info h2 {
-  padding: 10px;
+.content {
+  display: flex;
+  justify-content: space-between;
 }
 </style>

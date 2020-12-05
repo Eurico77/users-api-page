@@ -1,4 +1,4 @@
-const SET_LIST = (state, { users }) => {
+const listUser = (state, { users }) => {
   state.users = users;
 };
 
@@ -7,6 +7,6 @@ const novoUser = (state, user) => {
 };
 
 export default {
-  SET_LIST,
+  listUser,
   novoUser,
 };
